@@ -1,23 +1,28 @@
 <?php
-$con = mysqli_connect("localhost","root","","demo"); //connection variable
-
-if(mysqli_connect_errno()){
-    echo "Failed to connect: " . mysqli_connect_errno();
-}
-
-$query = mysqli_query($con, "INSERT INTO test VALUES('2', 'Marking')");
-
+    include("includes/header.php");
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    hello hello hello
+        <div class="user_details column">
+            <a href="<?php echo $userLoggedIn; ?>"> <img class="profile_picture" src="<?php echo $user['profile_pic']; ?>" alt=""></a>
+
+            <div class="user_details_left_right">
+            <a href="<?php echo $userLoggedIn; ?>">
+            <?php
+                echo $user['first_name'] . " " . $user['last_name'];
+            ?>
+            </a>
+            <br>
+            <?php
+                echo "Posts: " . $user['num_post'] . "<br>";
+                echo "Likes: " . $user['num_likes'];
+            ?>
+            </div>
+        </div>
+        <div class="main_column column">
+            <form class="post_form" action="index.php" method="POST">
+                <textarea name="post_text" id="post_text" placeholder="Got something to say?"></textarea>
+                <input type="submit" name="post" id="post_button" value="Post">
+            </form>
+        </div>
+    </div>
 </body>
 </html>
